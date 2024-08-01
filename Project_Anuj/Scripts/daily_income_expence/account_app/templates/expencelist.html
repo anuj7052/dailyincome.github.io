@@ -1,0 +1,68 @@
+{%extends 'sidebar.html'%} {%block body%}
+<h1>ALL Expence List</h1>
+<form action="{%url 'expence_app:expence_search'%}" method="POST">
+  {%csrf_token%}
+  <textarea name="srch" id="" rows="3" cols="60"></textarea>
+  <input type="submit" value="search" name="" id="">
+</form>
+{%if expl%}
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Expence</th>
+    <th>Expence_type</th>
+    <th>Expence_Date</th>
+    <th>Description</th>
+    <th>User</th>
+    <th colspan="2">Action</th>
+  </tr>
+  {%for i in expl%}
+  <tr>
+    <td>{{i.id}}</td>
+    <td>{{i.expence}}</td>
+    <td>{{i.expence_type}}</td>
+    <td>{{i.expence_date}}</td>
+    <td>{{i.description}}</td>
+    <td>{{i.user}}</td>
+    <td><a href="delete/{{i.id}}">delete</a></td>
+    <td><a href="edit/{{i.id}}">edit</a></td>
+  </tr>
+  {%endfor%}
+</table>
+{%else%}
+<h1>no record found</h1>
+{%endif%}
+<style>
+  .rside{
+    width: 200px;
+    height: 100%;
+    background-color: wheat;
+    position: fixed;
+    right: 0%;
+    top: 0%;
+  }
+
+  h3{
+    margin: 10px;
+    padding: 10px;
+  }
+  .rside a{
+    color: rgb(202, 95, 95);
+    text-decoration: none;
+    font-size: 25px;
+    
+  }
+
+  .rside a:hover{
+    color:red;
+    text-decoration: line-through;
+  }
+</style>
+<div class="rside">
+  <h2>Sort By expence_type</h2>
+  <h3><a href="{%url 'expence_app:explist2'%}">All</a></h3>
+  {%for i in expt%}
+  <h3><a href="{%url 'expence_app:ext1' i %}">{{i}}</a></h3>
+  {%endfor%}
+</div>
+{%endblock%}

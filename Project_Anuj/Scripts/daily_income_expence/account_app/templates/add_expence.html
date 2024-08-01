@@ -1,0 +1,57 @@
+{%extends 'sidebar.html'%} {%block body%}
+<h1>Add Expence here</h1>
+<form action="" method="POST">
+  {%csrf_token%}
+  <table border="1">
+    <tr>
+    <th><label for="id_expence">Expence:</label></th>
+    <td>
+      
+      <input type="number" name="expence" required id="id_expence">
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_expence_type">Expence type:</label></th>
+    <td>
+      
+      <input type="text" name="expence_type" maxlength="30" required id="id_expence_type">
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_expence_date">Expence date:</label></th>
+    <td>
+      
+      <input type="text" name="expence_date" required id="id_expence_date">
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_description">Description:</label></th>
+    <td>
+      
+      <textarea name="description" cols="40" rows="10" maxlength="300" required id="id_description">
+</textarea>
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_user">User:</label></th>
+    <td><input type="text" value="{{user}}"></td>
+  </tr>
+    <tr>
+      <td><input type="submit" value="save" /></td>
+      <td><input type="reset" value="reset" /></td>
+    </tr>
+  </table>
+</form>
+{%endblock%}
